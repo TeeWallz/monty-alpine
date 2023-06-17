@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background{
+    /* @apply container m-auto p-3 text-center bg-orange-50 rounded; */
+    @apply container p-4 mx-auto text-center bg-orange-50 rounded mt-3 max-w-[98%] min-h-screen;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.3s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+main{
+    @apply fade-in;
+    @apply max-w-2xl mx-auto;
+}
+
+/* Keep all sections/headers/footers the same width */
+.width-thingy{
+    @apply mx-auto;
+}
+.card{
+    @apply bg-white my-2 pt-2 pb-5;
+    box-shadow: 2px 2px 2px 2px rgb(170 170 170 / 67%);
+}
+
+
+header{
+    @apply width-thingy;
+    @apply -my-2;           /* Counteract the 2px margin on the top of the first card*/
+}
+
+section{
+    @apply width-thingy;
+    @apply card;
+}
+
+footer{
+    @apply width-thingy;
+    @apply card;
+}
+
+heading {
+    @apply text-2xl;
+}
+
+a {
+    @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600
+ }
