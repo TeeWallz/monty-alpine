@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ 
+    chumps: [],
+    stats: {current_streak: 0, streak_max_chump: {}, current_chump: {}},
+    currentChump: {},
+    current_streak: -1,
+    current_status: 'assss'
+}" x-init="
+    chumps = await (await fetch('chumps.json')).json();
+    stats  = await (await fetch('stats.json')).json();
+">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preload" href="assets/fonts/roboto.woff2" as="font" type="font/woff2">
+    <script src="http://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <link rel="prefetch" href="assets/images/general/MontyHeader.png" />
+</head>
+
+<body>
+    <div class="background">
+        <template x-if="chumps.length > 0">
+            <main>
+
+                <header>
+                    <img src="assets/images/general/MontyHeader.png">
+                    <!-- Images
+                New twitter for reporting?
+                Form sucks -->
+                </header>
+
+
+                <section>
+                    <heading class="text-5xl" x-text="stats.current_streak"></heading>
+                    <div class="text-base">
+                        As of <span x-text="stats.current_chump?.date_pretty"></span>
+                    </div>
+                </section>
+
+                <section>
+                    <heading>Current ''''CHAMPION'''''</heading>
+                    <img class="max-w-[80%] mx-auto" x-bind:src="stats.current_chump?.image" ">
+                    <p>
+                    <a 
+                        x-text="stats.current_chump?.name"
+                        x-bind:href="stats.current_chump?.url"
+                        x-bind:target="'_self'"></a>
+                    </p>
+                </section>
+
+                <section>
+                    <heading>Stats</heading>
+                    <p> Current Status: <span x-text="stats.status"></span></p>
+                    <p> streak_average: <span x-text="stats.streak_average"></span></p>
+                    <p> streak_median: <span x-text="stats.streak_median"></span></p>
+                    <p> streak_standard_deviation: <span x-text="stats.streak_average"></span></p>
+
+                    <!-- <div>
+                        <p>Longest running streak:</p>
+                        <table class="table-fixed">
+                            <tbody>
+                              <tr>
+                                <td>Date:</td>
+                                <td x-text="stats.streak_max_chump.date_pretty"></td>
+                              </tr>
+                              <tr>
+                                <td>Name:</td>
+                                <td>
+                                    <a 
+                                    x-text="stats.streak_max_chump?.name"
+                                    x-bind:href="stats.streak_max_chump?.url"
+                                    x-bind:target="'_self'"></a>
+                                </p>
+                                </p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Date:</td>
+                                <td x-text="stats.streak_max_chump.date"></td>
+                              </tr>
+                              <tr>
+                                <td>Date:</td>
+                                <td x-text="stats.streak_max_chump.date"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div> -->
+
+                    <div class="flex flex-col">
+                        <div class="overflow-x-auto">
+                          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                              <table class="stats_table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                      #
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                      First
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                      Last
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                      Handle
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="bg-gray-100 border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      Mark
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      Otto
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      @mdo
+                                    </td>
+                                  </tr>
+                                  <tr class="bg-white border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      Jacob
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      Thornton
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      @fat
+                                    </td>
+                                  </tr>
+                                  <tr class="bg-gray-100 border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                                    <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                      Larry the Bird
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      @twitter
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    Add Longest streak
+                    Remove dumb stats
+                </section>
+
+                <section>
+                    <heading>History</heading>
+
+                    <p> - Paginate?</p>
+
+                </section>
+
+                <section>
+                    <heading>Streak calendar</heading>
+
+                </section>
+
+                <section>
+                    <heading>Histogram</heading>
+
+                    <p>combine into stats?</p>
+
+                </section>
+
+                <section>
+                    <heading>Links</heading>
+
+                </section>
+
+                <section>
+                    <heading>Report form</heading>
+
+                </section>
+
+                <section>
+                    <heading>Comments section</heading>
+                    <p>How to make less ass?</p>
+                </section>
+
+                <footer>
+                    Usability check
+                    Small phone check
+                    SEO check
+
+
+                </footer>
+            </main>
+        </template>
+
+        <template x-for="chump in chumps">
+            <table>
+                <tbody>
+                    <tr>
+                        <td x-text="chump.date"></td>
+                        <td>|</td>
+                        <td x-text="chump.streak"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+    </div>
+
+</body>
+
+</html>

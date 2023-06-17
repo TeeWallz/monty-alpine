@@ -1,0 +1,48 @@
+{
+    "current_streak": 65,
+    "status": "BOUT WAAAAAY OVERDUE!!",
+    "streak_average": 44,
+    "streak_standard_deviation": 51.66,
+    "streak_median": 25,
+    "current_chump": {
+        "date": "2022-11-21",
+        "chump_number": 57,
+        "name": "Concrete Truck thought he could duck out for a ciggie. Surely no one will notice..!",
+        "streak": 65,
+        "thanks": "Thank you Samantha, Mark, Roni, Pat, Jeremt, Richard and Prathmesh!",
+        "url": "https://old.reddit.com/r/melbourne/comments/z0mch1/just_past_midday_on_a_monday_and_the_monty/",
+        "image": "/dist//assets/images/chumps/large/2022-11-21.jpeg",
+        "thumb": "/dist//assets/images/chumps/large/2022-11-21.jpeg",
+        "date_aus_string": "21/11/2022",
+        "date_pretty": "21st November 2022",
+        "date_year": "2022",
+        "date_week": 46,
+        "chumps": [
+            {
+                "name": "Concrete Truck thought he could duck out for a ciggie. Surely no one will notice..!",
+                "url": "https://old.reddit.com/r/melbourne/comments/z0mch1/just_past_midday_on_a_monday_and_the_monty/"
+            }
+        ]
+    },
+    "streak_max_chump": {
+        "date": "2017-06-02",
+        "chump_number": 20,
+        "name": "Atlas Truck",
+        "streak": 248,
+        "thanks": "Thanks Jake, Dave, Cameron, Sarah and Wayno! Thanks Greg for the album!",
+        "url": "https://imgur.com/a/F2ePg",
+        "image": "/dist//assets/images/chumps/large/2017-06-02.jpg",
+        "thumb": "/dist//assets/images/chumps/large/thumbs/2017-06-02.jpg",
+        "date_aus_string": "02/06/2017",
+        "date_pretty": "2nd June 2017",
+        "date_year": "2017",
+        "date_week": 22,
+        "chumps": [
+            {
+                "name": "Atlas Truck",
+                "image": "https://i.imgur.com/JeXWJrn.jpg",
+                "url": "https://imgur.com/a/F2ePg"
+            }
+        ]
+    }
+}
